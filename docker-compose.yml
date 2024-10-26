@@ -1,0 +1,19 @@
+services:
+  client:
+    container_name: ngixreactapp
+    build:
+      context: client/.
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    environment:
+      BACKEND_URL: http://localhost:4000
+  server:
+    container_name: goapp
+    build:
+      context: server/.
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      FRONTEND_URL: http://localhost    
